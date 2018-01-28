@@ -3,17 +3,18 @@ This repository contains a c++ program that inputs a N x N symmetric matrix and 
 
 The following operations are done on the matrix to check the reliabilty of the program.
 
-  ``1)changing elements of only one triangle(upper or lower)
+    1)changing elements of only one triangle(upper or lower)
 
-  2)addition/subtraction(inputting two matrices in which atleast one is symmetric)
+    2)addition/subtraction(inputting two matrices in which atleast one is symmetric)
   
-  3)multiplication of two matrices.``
+    3)multiplication of two matrices.
   
-**The program also outputs the space saved(as compared to when the whole matrix is stored instead of just upper or lower triangular elements)**
+*The program also outputs the space saved(as compared to when the whole matrix is stored instead of just upper or lower triangular elements)*
 
-The value of N can range till (long long), so the total elements the matrix can contain are: 
+The value of **N can range from 0 to 18,446,744,073,709,551,615**(unsigned long long), so the total elements the matrix can contain are: ****
 
 It is evident that storage optimization becomes more important when we have very large number of data elements.
 
-  **RESULTS**
-  to be written after completion of program
+    **RESULTS**
+    
+    to be written after completion of program
