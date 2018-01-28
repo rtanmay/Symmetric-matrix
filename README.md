@@ -19,12 +19,12 @@ Standard streams are used for Input and Output(Keyboard-Input and Monitor-Output
 The value of **N can range from 0 to 18,446,744,073,709,551,615**(unsigned long long ), so the total elements the matrix can contain are: **> 10^38**
 
 Since we store only half of the matrix(upper or lower triangle) we save space of (n^2 - n )/2 elements.
-If each element is of 8bytes and value of N is (2 * 10^9)then **space saved is: ~ 8x2x10^18 bytes ~ 1.6x10^7 TB(Tera Bytes) **
+If each element is of 8bytes and value of N is (2x10^9)then **space saved is: ~ 8x2x10^18 bytes ~ 1.6x10^7 TB(Tera Bytes)**
 
 Note:- 1TB~10^12 Bytes.
 
 It is evident that storage optimization becomes more important when we have very large number of data elements and of higher size.
 
-    **RESULTS**
+**RESULTS**
     
-    to be written after completion of program
+    To be written after completion of program
