@@ -1,4 +1,4 @@
-# Symmetric-matrix
+# Symmetric-matrix-optimization
 This repository contains:-
 
 1)A C++ program that inputs a *N x N symmetric matrix* and **stores only the upper or lower triangular elements to optimize the computer storage** and performs the operations mentioned below and also outputs the space saved.
@@ -27,4 +27,12 @@ It is evident that storage optimization becomes more important when we have very
 
 **RESULTS**
     
-    To be written after completion of program
+                             Space Saved
+    N=3,     size=4 bytes -->12 bytes
+    N=3,     size=8 bytes -->24 bytes
+    N=1000,  size=4 bytes -->1.998e+06 bytes
+    N=1000,  size=8 bytes -->3.996e+06 bytes
+    N=10^6,  size=4 bytes -->2e+12 bytes
+    N=10^6,  size=8 bytes -->4e+12 bytes
+    N=10^9,  size=4 bytes -->2e+18 bytes
+    N=10^9,  size=8 bytes -->4e+18 bytes
