@@ -27,6 +27,7 @@ It is evident that storage optimization becomes more important when we have very
 
 **RESULTS**
     
+                             Space Saved
     N=3,     size=4 bytes -->12 bytes
     N=3,     size=8 bytes -->24 bytes
     N=1000,  size=4 bytes -->1.998e+06 bytes
