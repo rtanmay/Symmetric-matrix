@@ -3,7 +3,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-//The class is created similar to matrix template in Eigen library
+//The class is created similar to matrix template class in Eigen library:-
+//-------------------------------------------------------------------------------------------
+//template<typename _Scalar, int _Rows, int _Cols, int _Options, int _MaxRows, int _MaxCols>
+//class Eigen::Matrix< _Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols >
+//-------------------------------------------------------------------------------------------
 
 template <typename T>
 class Symtrix                       
@@ -18,7 +22,7 @@ class Symtrix
        }
        S=(N*N+N)/2;
        
-       T **ptr = new T[N][N];
+
 
        void Input();
        void Print();
