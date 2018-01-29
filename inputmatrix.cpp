@@ -1,57 +1,71 @@
+//		SYMMETRIC MATRIX CLASS STORING UPPER TRAINGLE ONLY
+
 #include <bits/stdc++.h>
 using namespace std;
 
-//The class is created similar to matrix template in Eigen
+//The class is created similar to matrix template in Eigen library
 
 template <typename T>
 class Symtrix                       
     {   
       public:
-       int N;
-       int S;
-       S=(N*N+N)/2;
-       T M[n][n];
-       Symtrix(int initialise)        //CONSTRUCTOR
+        int N;
+        int S;
+              
+       Symtrix(int initialise,T ptr)        //CONSTRUCTOR
        {
        	N=initialise;
        }
-       T M[100][100];
-       void Input(int);
-       void Print(int);
+       S=(N*N+N)/2;
+       
+       T **ptr = new T[N][N];
+
+       void Input();
+       void Print();
 
     };
 
-void Symtrix::Input(int n)
+
+//INPUT FUNCTION
+template <typename T>
+void Symtrix<T>::Input()
 { 
   int i,j;
-  for(i=0;i<n;i++)
+  for(i=0;i<N;i++)
   {
-  	for(j=0;j<n;j++)
+  	for(j=0;j<N;j++)
   	{
   		cin>>M[i][j];
   	}
   }
 }
-void Symtrix::Print(int n)
+
+//PRINT FUNCTION
+template <typename T>
+void Symtrix<T>::Print()
 {
   int i,j;
-  cout<<"----------------------------------";
-  for(i=0;i<n;i++)
+  cout<<"\nPrinting the output:\n";
+  for(i=0;i<N;i++)
   {
-  	for(j=0;j<n;j++)
+  	for(j=0;j<N;j++)
   	{
-  		cout<<M[i][j];
+  		cout<<M[i][j]<<" ";
   	}
+  	cout<<"\n";
   }
-
+	
 }
+
+//MAIN FUNCTION
 int main()
 {   
 	int num;
-	cout<<"Enter the order of the matrix(less than 10^8):";
+	cout<<"Enter the order of the matrix:";
 	cin>>num;
-	Symtrix<float> s(num);
-	s.Input(s.N);
-	s.Print(s.N);
+	float telltype;
+	Symtrix<float> s(num,telltype);                     //Passing arguments when creating an object
+	s.Input();
+	s.Print();
     return 0;	
 }
