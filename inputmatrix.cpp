@@ -66,7 +66,7 @@ void SymMatrix<_Scalar>::Print()
        }
        else
        {
-         
+         //
        }
   	}
   	cout<<"\n";
@@ -80,35 +80,24 @@ template<typename _Scalar>
 void SymMatrix<_Scalar>::Printelement(int row,int col)
 { 
   int r=row,c=col;	 
-  
-  if(r>=c)
+  if(r<c)                 //Swapping as A(i,j)==A(j,i) if A is symmetric
   {
-  	int i,j,k=0;
-    for(i=0;i<r;i++)
-    {
-  	  for (j=0;j<=c;j++)
-  	  {
-        k++;
-  	  }
-    }
-    cout<<"Element at row:"<<row+1<<" and column:"<<col+1<<" is:"<<store[k];
-  }
-  else
-  { 
   	int temp=c;
   	c=r;
-  	r=temp;
-  	int i,j,k=0;
-    for(i=0;i<r;i++)
+  	r=temp;  	
+  }
+  
+  int i,j,k=0;
+  for(i=0;i<r;i++)
     {
-  	  for (j=0;j<=c;j++)
+  	  for (j=0;j<=i;j++)
   	  {
         k++;
   	  }
     }
-  	cout<<"Element at row:"<<row+1<<" and column:"<<col+1<<" is:"<<store[k];
-  }
-
+  k=k+c;
+  cout<<"Element at row:"<<row+1<<" and column:"<<col+1<<" is:"<<store[k]<<"\n";
+  
 }
 
 
