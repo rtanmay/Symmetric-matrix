@@ -14,18 +14,20 @@ class Symtrix
     {   
       public:
         int N;
-        int S;
+        //int S;
               
-       Symtrix(int initialise,T ptr)        //CONSTRUCTOR
+       Symtrix(int initialise,T gettype)        //CONSTRUCTOR
        {
        	N=initialise;
        }
-       S=(N*N+N)/2;
+        //int S=(N*N+N)/2;
        
-
-
+       vector<vector<T> > matrix(N, vector<T> N);
+       
+    
        void Input();
        void Print();
+       //~Symtrix();                              //DESTRUCTOR
 
     };
 
@@ -35,13 +37,16 @@ template <typename T>
 void Symtrix<T>::Input()
 { 
   int i,j;
+  T temp;
   for(i=0;i<N;i++)
   {
-  	for(j=0;j<N;j++)
-  	{
-  		cin>>M[i][j];
-  	}
+    for(j=0;j<N;j++)
+    {
+    	cin>>matrix[i][j];
+    	//matrix[i].push_back(temp);
+    }
   }
+
 }
 
 //PRINT FUNCTION
@@ -54,7 +59,7 @@ void Symtrix<T>::Print()
   {
   	for(j=0;j<N;j++)
   	{
-  		cout<<M[i][j]<<" ";
+  		cout<<matrix[i][j]<<" ";
   	}
   	cout<<"\n";
   }
@@ -64,11 +69,11 @@ void Symtrix<T>::Print()
 //MAIN FUNCTION
 int main()
 {   
-	int num;
+	int order;
 	cout<<"Enter the order of the matrix:";
-	cin>>num;
+	cin>>order;
 	float telltype;
-	Symtrix<float> s(num,telltype);                     //Passing arguments when creating an object
+	Symtrix<float> s(order,telltype);                     //Passing arguments when creating an object
 	s.Input();
 	s.Print();
     return 0;	

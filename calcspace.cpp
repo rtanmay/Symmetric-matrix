@@ -10,7 +10,10 @@ int main()
 	int s;
 	cin>>s;
 	double c;
-	c=s*(N*N-N)/2;
+	cout<<"Enter no. of such matrices:";
+	int num;
+	cin>>num;
+	c=num*s*(N*N-N)/2;
 	cout<<"The space stored by storing only upper or lower traingle instead of the whole matrix is: "<<c<<" bytes\n";
 	return 0;
 
