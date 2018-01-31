@@ -6,7 +6,7 @@ This repository contains:-
 **How program works:-**
 
 *The SymMatrix class stores only the lower triangle in a vector in row major order.
-Nested for loop is used to calculate the position of a certain elements in the vector.*
+Nested for loop is used to calculate the position of a certain element in the vector.*
 
 2)A C++ program(**calcspace.cpp**) that finds the space saved *(as compared to when the whole matrix is stored instead of just upper or lower triangular elements)* it inputs the order of matrix and size of each element and outputs the space saved.
 
