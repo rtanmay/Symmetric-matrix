@@ -25,7 +25,7 @@ If each element is of 8bytes and value of N is (2x10^9)then **space saved is: ~ 
 
 Note:- 1TB~10^12 Bytes.
 
-_**From practical point of view**: if we create 1000 matrices of size 100x100, where each element is of 8 bytes, then the space saved is: **3.96x10^7 bytes ~ 40 MB** _ 
+``_**From practical point of view**: if we create 1000 matrices of size 100x100, where each element is of 8 bytes, then the space saved is: **3.96x10^7 bytes ~ 40 MB** _ ``
 
 It is evident that storage optimization becomes more important when we have very large number of data elements and of higher size.
 
