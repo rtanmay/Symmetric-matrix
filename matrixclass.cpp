@@ -23,12 +23,13 @@ class SymMatrix
 
        int cols_in_store;                               //Columns in the store vector
 
-       vector<_Scalar> store;                    		//Storing in row major order
+       vector<_Scalar> store;                    	    //Storing in row major order
 
        //Member functions
        void Input();
        void Print();
        void Printelement(int,int);
+
 
     };
 
@@ -61,7 +62,7 @@ void SymMatrix<_Scalar>::Print()
   	{  
   	   if( i>=j )
   	   {
-         cout<<store[k]<<" ";
+         cout<<setw(2)<<store[k]<<" ";
          k++;
        }
        else
@@ -79,7 +80,7 @@ void SymMatrix<_Scalar>::Print()
   	  		}
     	 }
     	 l=l+j1;
-    	 cout<<store[l]<<" ";
+    	 cout<<setw(2)<<store[l]<<" ";
 
        }
   	}
@@ -114,6 +115,22 @@ void SymMatrix<_Scalar>::Printelement(int row,int col)
   
 }
 
+//SUM Function
+template<typename _Scalar>
+vector<_Scalar> sum(_Scalar gettype,vector<_Scalar>& v1,vector<_Scalar>& v2)
+{
+	assert(v1.size()==v2.size());       //Condition for matrices to be conformable for addition
+
+	vector<_Scalar> v3;
+	v3.reserve(v1.size());
+
+	for(int i=0;i<v1.size();i++)
+	{
+		v3.push_back(v1[i]+v2[i]);
+	}
+	return v3;
+
+}
 
 
 //MAIN FUNCTION
@@ -121,17 +138,29 @@ int main()
 {   
 	//Creating a 5x5 float matrix;
 	float telltype;
-	SymMatrix<float> m(5,telltype);        
+	SymMatrix<float> m1(5,telltype);        
+	SymMatrix<float> m2(5,telltype);
+	SymMatrix<float> m3(5,telltype);
 
 	//Inputs only lower triangle of the matrix
-	m.Input();
+	cout<<"Matrix 1:";
+	m1.Input();
+	cout<<"\nMatrix 2:";
+	m2.Input();
 	
 	//Prints the whole matrix,it does not create a matrix, just print the elements.
-	m.Print();
+	cout<<"\nMatrix 1:\n";
+	m1.Print();
+	cout<<"\nMatrix 2:\n";
+	m2.Print();
 
 	//Prints a specific element
 	//Here it is printing element at 3rd row and 4th column
-	m.Printelement(2,3);              
+	//m.Printelement(2,3);       
+
+	m3.store=sum(telltype,m1.store,m2.store);      
+	cout<<"\nSum of Matrix1 and Matrix2:";
+	m3.Print();
 
     return 0;	
 }
