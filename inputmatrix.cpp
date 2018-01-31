@@ -17,15 +17,15 @@ class SymMatrix
               
        SymMatrix(int initialise,_Scalar gettype)        //CONSTRUCTOR
        {
-       	 _Rows=initialise;
+       	 _Rows=initialise;                              //Rows same as columns as symmetric matrix is a square matrice
        	 _Cols=initialise;
        }
 
-       int cols_in_store;    
+       int cols_in_store;                               //Columns in the store vector
 
        vector<_Scalar> store;                    		//Storing in row major order
 
-    
+       //Member functions
        void Input();
        void Print();
        void Printelement(int,int);
@@ -66,7 +66,21 @@ void SymMatrix<_Scalar>::Print()
        }
        else
        {
-         //
+       	 int l,i1=i,j1=j,i2,j2;
+         int temp=i1;
+         i1=j1;
+         j1=temp;
+         l=0;
+  		 for(i2=0;i2<i1;i2++)
+    	 {
+  	  		for (j2=0;j2<=i2;j2++)
+  	  		{
+        		l++;
+  	  		}
+    	 }
+    	 l=l+j1;
+    	 cout<<store[l]<<" ";
+
        }
   	}
   	cout<<"\n";
@@ -112,7 +126,7 @@ int main()
 	//Inputs only lower triangle of the matrix
 	m.Input();
 	
-	//Prints the whole matrix
+	//Prints the whole matrix,it does not create a matrix, just print the elements.
 	m.Print();
 
 	//Prints a specific element
