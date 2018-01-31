@@ -16,7 +16,8 @@ The following operations are done on the matrix to check the efficiency of the p
 
 Standard streams are used for Input and Output(Keyboard-Input and Monitor-Output)
 
-Theoretically
+**Theoretically**
+
 The value of **N can range from 0 to 18,446,744,073,709,551,615**(unsigned long long ), so the total elements the matrix can contain are: **> 10^38**
 
 Since we store only half of the matrix(upper or lower triangle) we save space of (n^2 - n )/2 elements.
