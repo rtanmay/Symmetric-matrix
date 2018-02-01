@@ -132,6 +132,22 @@ vector<_Scalar> sum(_Scalar gettype,vector<_Scalar>& v1,vector<_Scalar>& v2)
 
 }
 
+//DIFFERENCE Function
+template<typename _Scalar>
+vector<_Scalar> diff(_Scalar gettype,vector<_Scalar>& v1,vector<_Scalar>& v2)
+{
+	assert(v1.size()==v2.size());       //Condition for matrices to be conformable for addition
+
+	vector<_Scalar> v3;
+	v3.reserve(v1.size());
+
+	for(int i=0;i<v1.size();i++)
+	{
+		v3.push_back(v1[i]-v2[i]);
+	}
+	return v3;
+
+}
 
 //MAIN FUNCTION
 int main()
@@ -141,6 +157,7 @@ int main()
 	SymMatrix<float> m1(5,telltype);        
 	SymMatrix<float> m2(5,telltype);
 	SymMatrix<float> m3(5,telltype);
+	SymMatrix<float> m4(5,telltype);
 
 	//Inputs only lower triangle of the matrix
 	cout<<"Matrix 1:";
@@ -161,6 +178,10 @@ int main()
 	m3.store=sum(telltype,m1.store,m2.store);      
 	cout<<"\nSum of Matrix1 and Matrix2:";
 	m3.Print();
+
+	m4.store=diff(telltype,m1.store,m2.store);      
+	cout<<"\nDifference of Matrix1 and Matrix2:";
+	m4.Print();
 
     return 0;	
 }
