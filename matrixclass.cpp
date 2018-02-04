@@ -54,38 +54,34 @@ void SymMatrix<_Scalar>::Input()
 template <typename _Scalar>
 void SymMatrix<_Scalar>::Print()
 {
-  int i,j,k=0;
-  cout<<"\nThe matrix looks like:\n";
+  //clock_t start;
+  //double duration;
+  //start=clock();
+  int i,j,k;
+  cout<<"\nThe matrix looks like:\n";     
   for(i=0;i<_Rows;i++)
   {
   	for (j=0;j<_Cols;j++)
   	{  
   	   if( i>=j )
   	   {
-         cout<<setw(2)<<store[k]<<" ";
-         k++;
+		 k=(i*(i+1))/2;
+  		 k=k+j;
+  		 cout<<setw(2)<<store[k]<<" ";
        }
        else
        {
-       	 int l,i1=i,j1=j,i2,j2;
-         int temp=i1;
-         i1=j1;
-         j1=temp;
-         l=0;
-  		 for(i2=0;i2<i1;i2++)
-    	 {
-  	  		for (j2=0;j2<=i2;j2++)
-  	  		{
-        		l++;
-  	  		}
-    	 }
-    	 l=l+j1;
-    	 cout<<setw(2)<<store[l]<<" ";
-
+		 k=(j*(j+1))/2;
+  		 k=k+i;
+  		 cout<<setw(2)<<store[k]<<" ";
        }
+
   	}
   	cout<<"\n";
   }
+  //cout<<"\n";
+  //duration=(clock()-start)/ (double)CLOCKS_PER_SEC;
+  //cout<<"Time taken for this print loop= "<<duration;
   cout<<"\n";
 	
 }
@@ -94,7 +90,10 @@ void SymMatrix<_Scalar>::Print()
 template<typename _Scalar>
 void SymMatrix<_Scalar>::Printelement(int row,int col)
 { 
-  int r=row,c=col;	 
+  clock_t start;
+  double duration;
+  start=clock();
+  int r=row,c=col,k=0;	 
   if(r<c)                 //Swapping as A(i,j)==A(j,i) if A is symmetric
   {
   	int temp=c;
@@ -102,7 +101,7 @@ void SymMatrix<_Scalar>::Printelement(int row,int col)
   	r=temp;  	
   }
   
-  int i,j,k=0;
+  int i,j;
   for(i=0;i<r;i++)
     {
   	  for (j=0;j<=i;j++)
@@ -112,6 +111,9 @@ void SymMatrix<_Scalar>::Printelement(int row,int col)
     }
   k=k+c;
   cout<<"Element at row:"<<row+1<<" and column:"<<col+1<<" is:"<<store[k]<<"\n";
+  duration=(clock()-start)/ (double)CLOCKS_PER_SEC;
+  cout<<"Time taken to print this element= "<<duration;
+  cout<<"\n";
   
 }
 
@@ -155,33 +157,33 @@ int main()
 	//Creating a 5x5 float matrix;
 	float telltype;
 	SymMatrix<float> m1(5,telltype);        
-	SymMatrix<float> m2(5,telltype);
-	SymMatrix<float> m3(5,telltype);
-	SymMatrix<float> m4(5,telltype);
+	//SymMatrix<float> m2(5,telltype);
+	//SymMatrix<float> m3(5,telltype);
+	//SymMatrix<float> m4(5,telltype);
 
 	//Inputs only lower triangle of the matrix
 	cout<<"Matrix 1:";
 	m1.Input();
-	cout<<"\nMatrix 2:";
-	m2.Input();
+	//cout<<"\nMatrix 2:";
+	//m2.Input();
 	
 	//Prints the whole matrix,it does not create a matrix, just print the elements.
 	cout<<"\nMatrix 1:\n";
 	m1.Print();
-	cout<<"\nMatrix 2:\n";
-	m2.Print();
+	//cout<<"\nMatrix 2:\n";
+	//m2.Print();
 
 	//Prints a specific element
 	//Here it is printing element at 3rd row and 4th column
-	//m.Printelement(2,3);       
+	m1.Printelement(4,4);       
 
-	m3.store=sum(telltype,m1.store,m2.store);      
-	cout<<"\nSum of Matrix1 and Matrix2:";
-	m3.Print();
+	//m3.store=sum(telltype,m1.store,m2.store);      
+	//cout<<"\nSum of Matrix1 and Matrix2:";
+	//m3.Print();
 
-	m4.store=diff(telltype,m1.store,m2.store);      
-	cout<<"\nDifference of Matrix1 and Matrix2:";
-	m4.Print();
+	//m4.store=diff(telltype,m1.store,m2.store);      
+	//cout<<"\nDifference of Matrix1 and Matrix2:";
+	//m4.Print();
 
     return 0;	
 }
