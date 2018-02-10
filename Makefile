@@ -16,16 +16,11 @@ matrixclass.o: matrixclass.cpp
 #This compiles all the files
 all: matrixclass.o calctime.o calcspace.o
 
-
-
 #This compiles only the calctime.cpp
 #-std=c++11 is needed for chrono's high resolution clock to work
-calctime:
+calctime.o: calctime.cpp
 	$(CC) $(CFLAGS) -std=c++11 calctime.cpp -o calctime
 
 #This compiles only the calcspace.cpp
-calcspace:
+calcspace.o: calcspace.cpp
 	$(CC) $(CFLAGS) calcspace.cpp -o calcspace
-
-
-
