@@ -40,7 +40,7 @@ void SymMatrix<_Scalar>::Input()
 { 
   cout<<"Enter only the lower triangle of matrix:\n";
   cols_in_store=(_Rows*(_Rows+1))/2;	
-  int i,j;
+  int i;
   _Scalar temp;
   for(i=0;i<cols_in_store;i++)
   {
