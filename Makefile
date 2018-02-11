@@ -5,7 +5,8 @@
 
 CC=g++
 
-CFLAGS=-c -Wall
+#add -c -Wall later
+CFLAGS= 
 
 
 #The first target is taken as the default target

@@ -168,7 +168,7 @@ int main()
 	//m2.Input();
 	
 	//Prints the whole matrix,it does not create a matrix, just print the elements.
-	cout<<"\nMatrix 1:\n";
+	cout<<"\nMatrix 1 is:\n";
 	m1.Print();
 	//cout<<"\nMatrix 2:\n";
 	//m2.Print();
