@@ -1,7 +1,9 @@
 //SYMMETRIC MATRIX CLASS STORING ONLY THE LOWER TRAINGLE  IN A VECTOR (IN ROW MAJOR ORDER)
 
 #include <bits/stdc++.h>
+#include <Eigen/Dense>
 using namespace std;
+using namespace Eigen;
 
 //Aim is to create a class similar to matrix template class in Eigen library:-
 //-------------------------------------------------------------------------------------------
@@ -29,6 +31,7 @@ class SymMatrix
        void Input();
        void Print();
        void Printelement(int,int);
+
 
 
     };
@@ -90,9 +93,9 @@ void SymMatrix<_Scalar>::Print()
 template<typename _Scalar>
 void SymMatrix<_Scalar>::Printelement(int row,int col)
 { 
-  clock_t start;
-  double duration;
-  start=clock();
+  //clock_t start;
+  //double duration;
+  //start=clock();
   int r=row,c=col,k=0;	 
   if(r<c)                 //Swapping as A(i,j)==A(j,i) if A is symmetric
   {
@@ -111,9 +114,9 @@ void SymMatrix<_Scalar>::Printelement(int row,int col)
     }
   k=k+c;
   cout<<"Element at row:"<<row+1<<" and column:"<<col+1<<" is:"<<store[k]<<"\n";
-  duration=(clock()-start)/ (double)CLOCKS_PER_SEC;
-  cout<<"Time taken to print this element= "<<duration;
-  cout<<"\n";
+  //duration=(clock()-start)/ (double)CLOCKS_PER_SEC;
+  //cout<<"Time taken to print this element= "<<duration;
+  //cout<<"\n";
   
 }
 
@@ -138,7 +141,7 @@ vector<_Scalar> sum(_Scalar gettype,vector<_Scalar>& v1,vector<_Scalar>& v2)
 template<typename _Scalar>
 vector<_Scalar> diff(_Scalar gettype,vector<_Scalar>& v1,vector<_Scalar>& v2)
 {
-	assert(v1.size()==v2.size());       //Condition for matrices to be conformable for addition
+	assert(v1.size()==v2.size());       //Condition for matrices to be conformable for subtraction
 
 	vector<_Scalar> v3;
 	v3.reserve(v1.size());
@@ -151,13 +154,77 @@ vector<_Scalar> diff(_Scalar gettype,vector<_Scalar>& v1,vector<_Scalar>& v2)
 
 }
 
+//Inverse Function
+template <typename _Scalar>
+vector<_Scalar> inverse(_Scalar gettype,vector<_Scalar>& v, int order)
+{
+	double check;
+	check=determinant
+	vector<_Scalar> inv;
+	inv.reserve(v.size());
+
+	//creates a temporary matrix
+	vector< vector<gettype> > temp(order, vector<gettype> (order));
+	temp=creatematrix(v.store,order);
+
+	//its inverse is calculated and stored in temp
+	int i,j,k=0;
+	for(i=0;i<order;i++)
+	{
+		for(j=0;j<=i;j++)
+		{
+			
+
+			inv[k]=pow(-1,i+j)*temp.determinant();
+			k++;
+		}
+	}
+
+	return inv;
+}
+
+
+//Creating the matrix from the vector
+template <typename _Scalar>
+vector< vector<_Scalar> > creatematrix(_Scalar gettype,vector<_Scalar>& v, int order)
+{
+ 
+ int i,j;
+ vector< vector<gettype> > temp(order, vector<gettype> (order));
+ for(i=0;i<order;i++)
+  {
+  	for (j=0;j<order;j++)
+  	{  
+  	   if( i>=j )
+  	   {
+		 k=(i*(i+1))/2;
+  		 k=k+j;
+  		 temp[i][j]=v[k];
+       }
+       else
+       {
+		 k=(j*(j+1))/2;
+  		 k=k+i;
+  		 temp[i][j]=v[k];
+       }
+
+  	}
+  }
+  return temp;
+}
+
+
+
+
+
+
 //MAIN FUNCTION
 int main()
 {   
 	//Creating a 5x5 float matrix;
 	float telltype;
 	SymMatrix<float> m1(5,telltype);        
-	//SymMatrix<float> m2(5,telltype);
+	SymMatrix<float> m2(5,telltype);
 	//SymMatrix<float> m3(5,telltype);
 	//SymMatrix<float> m4(5,telltype);
 
@@ -175,7 +242,7 @@ int main()
 
 	//Prints a specific element
 	//Here it is printing element at 3rd row and 4th column
-	m1.Printelement(4,4);       
+	//m1.Printelement(4,4);       
 
 	//m3.store=sum(telltype,m1.store,m2.store);      
 	//cout<<"\nSum of Matrix1 and Matrix2:";
@@ -185,5 +252,11 @@ int main()
 	//cout<<"\nDifference of Matrix1 and Matrix2:";
 	//m4.Print();
 
+	//This creates the vector storing inverse of the matrix(lower triangle elements only)
+	m2.store=inverse(m1.store,5);
+
+	//This prints the inverse of the matrix
+	m2.Print();
+    
     return 0;	
 }
